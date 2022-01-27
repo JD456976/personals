@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -23,5 +24,7 @@ class UserSeeder extends Seeder
             'is_admin' => 1,
             'email_verified_at' => NOW(),
         ]);
+
+        User::factory()->count(25)->create();
     }
 }

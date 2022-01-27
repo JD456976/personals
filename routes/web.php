@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['verified','password.confirm']);
+
+
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'App\Http\Controllers\HomeController@home',
+])->middleware(['verified','password.confirm']);
+
+Route::resource('post', App\Http\Controllers\PostController::class);
+
+Route::resource('report', App\Http\Controllers\ReportController::class)->only('store');

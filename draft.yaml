@@ -1,1 +1,33 @@
+models:
+  Post:
+    user_id: id foreign:users
+    title: string
+    content: longText
+    relationships:
+      belongsTo: User
+      belongsToMany: Category
 
+  Category:
+    title: string
+
+  Report:
+    user_id: id foreign:users
+    reportable_type: string
+    reportable_id: integer
+    reason: string
+    comment: string
+    is_resolved: boolean
+    relationships:
+      belongsTo: User
+      hasOne: Post
+
+controllers:
+  Post:
+    resource
+  Report:
+    store:
+      validate: reason, content
+      save: post
+      redirect: back
+
+seeders: Post
