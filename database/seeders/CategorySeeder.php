@@ -17,31 +17,40 @@ class CategorySeeder extends Seeder
     {
         $data = [
             [
-                'title' => 'Casual Encounters'
+                'title' => 'Casual Encounters',
+                'slug' => 'casual-encounters',
             ],
             [
-                'title' => 'Women Seeking Men'
+                'title' => 'Women Seeking Men',
+                'slug' => 'women-seeking-men'
             ],
             [
-                'title' => 'Men Seeking Women'
+                'title' => 'Men Seeking Women',
+                'slug' => 'men-seeking-women'
             ],
             [
-                'title' => 'Men Seeking Men'
+                'title' => 'Men Seeking Men',
+                'slug' => 'men-seeking-men'
             ],
             [
-                'title' => 'Women Seeking Women'
+                'title' => 'Women Seeking Women',
+                'slug' => 'women-seeking-women'
             ],
             [
-                'title' => 'Strictly Platonic'
+                'title' => 'Strictly Platonic',
+                'slug' => 'strictly-platonic'
             ],
             [
-                'title' => 'Missed Connections'
+                'title' => 'Missed Connections',
+                'slug' => 'missed-connections'
             ],
             [
-                'title' => 'Couples Seeking Men'
+                'title' => 'Couples Seeking Men',
+                'slug' => 'couples-seeking-men'
             ],
             [
-                'title' => 'Couples Seeking Women'
+                'title' => 'Couples Seeking Women',
+                'slug' => 'couples-seeking-women'
             ]
         ];
 

@@ -58,4 +58,9 @@ class Post extends Model
     {
         return $this->morphMany(Report::class, 'reportable');
     }
+
+    public static function filteredPosts($query)
+    {
+        return Post::where('cat_id', $query)->get();
+    }
 }

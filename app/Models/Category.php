@@ -22,6 +22,7 @@ class Category extends Model
      */
     protected $fillable = [
         'title',
+        'slug'
     ];
 
     /**
@@ -32,4 +33,5 @@ class Category extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
 }

@@ -15,9 +15,9 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::all();
 
-        return view('post.index', compact('posts'));
+
+        return view('post.index');
     }
 
     /**
@@ -86,5 +86,10 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('post.index');
+    }
+
+    public function filteredPosts($query)
+    {
+        return view('post.index', compact('query'));
     }
 }

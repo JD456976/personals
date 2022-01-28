@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\PostTable;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [
     'as' => 'home',
     'uses' => 'App\Http\Controllers\HomeController@home',
+])->middleware(['verified','password.confirm']);
+
+
+Route::get('/posts/category/{id}', [
+    'as' => 'posts.category',
+    'uses' => 'App\Http\Controllers\PostController@filteredPosts',
 ])->middleware(['verified','password.confirm']);
 
 Route::resource('post', App\Http\Controllers\PostController::class);
