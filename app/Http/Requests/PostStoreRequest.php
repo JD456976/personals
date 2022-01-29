@@ -25,7 +25,8 @@ class PostStoreRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'content' => ['required', 'string'],
+            'content' => ['required', 'string', 'min:10'],
+            'zipcode' => ['required', 'numeric']
         ];
     }
 }

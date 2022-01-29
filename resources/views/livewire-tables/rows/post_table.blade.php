@@ -1,13 +1,17 @@
 <x-livewire-tables::bs5.table.cell>
-    {{ $row->title }}
+    <a href="{{ route('post.show', $row->id) }}">{{ $row->title }}</a>
 </x-livewire-tables::bs5.table.cell>
 
 <x-livewire-tables::bs5.table.cell>
-    {{ $row->zip }}
+    {{ $row->zipcode }}
 </x-livewire-tables::bs5.table.cell>
 
 <x-livewire-tables::bs5.table.cell>
-    Has Image
+    @if ($row->getMedia('posts')->count() == 0)
+        <span class="badge badge-glow bg-warning">No Images</span>
+    @else
+        <span class="badge badge-glow bg-success">Has Images</span>
+    @endif
 </x-livewire-tables::bs5.table.cell>
 
 <x-livewire-tables::bs5.table.cell>

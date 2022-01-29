@@ -20,8 +20,10 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->longText('content');
-            $table->integer('cat_id')->nullable();
+            $table->integer('category_id')->nullable();
             $table->string('zipcode')->nullable();
+            $table->string('slug')->nullable();
+            $table->boolean('is_featured')->default(0);
             $table->timestamps();
         });
 

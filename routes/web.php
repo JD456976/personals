@@ -22,9 +22,14 @@ Route::get('/', [
 ])->middleware(['verified','password.confirm']);
 
 
-Route::get('/posts/category/{id}', [
-    'as' => 'posts.category',
+Route::get('/category/{id}', [
+    'as' => 'category',
     'uses' => 'App\Http\Controllers\PostController@filteredPosts',
+])->middleware(['verified','password.confirm']);
+
+Route::get('/user/posts/', [
+    'as' => 'user.posts',
+    'uses' => 'App\Http\Controllers\UserController@posts',
 ])->middleware(['verified','password.confirm']);
 
 Route::resource('post', App\Http\Controllers\PostController::class);

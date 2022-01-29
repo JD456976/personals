@@ -33,5 +33,4 @@ class Category extends Model
     protected $casts = [
         'id' => 'integer',
     ];
-
 }

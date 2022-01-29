@@ -10,9 +10,12 @@
             @foreach ($categories as $category)
                 <div class="col-md-4 col-sm-6 col-12 kb-search-content">
                     <div class="card">
-                        <a href="{{ route('posts.category', [$category->id, $category->slug]) }}">
-                            <img src="../../../app-assets/images/illustration/sales.svg" class="card-img-top" alt="knowledge-base-image" />
-
+                        <a href="{{ route('category', $category->id) }}">
+                            <div class="row justify-content-center">
+                                <div style="font-size:96px;" class="col-3 text-center">
+                                    {!! $category->icon !!}
+                                </div>
+                            </div>
                             <div class="card-body text-center">
                                 <h4>{{ $category->title }}</h4>
                             </div>

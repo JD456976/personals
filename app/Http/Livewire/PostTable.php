@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -21,9 +22,9 @@ class PostTable extends DataTableComponent
             Column::make('Zipcode', 'zipcode')
                 ->sortable()
                 ->searchable(),
-            Column::make('Has Image(s)')
-                ->sortable(),
-            Column::make("Created at", "created_at")
+            Column::make('Has Image(s)'),
+
+            Column::make("Posted", "created_at")
                 ->sortable(),
         ];
     }
@@ -33,7 +34,7 @@ class PostTable extends DataTableComponent
 
         $posts = $this->posts;
         return Post::query()
-            ->where('cat_id',$posts);
+            ->where('category_id',$posts);
     }
 
     public function rowView(): string

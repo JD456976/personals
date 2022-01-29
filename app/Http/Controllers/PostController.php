@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
+use Stevebauman\Location\Facades\Location;
 
 class PostController extends Controller
 {
@@ -15,8 +20,6 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-
-
         return view('post.index');
     }
 
@@ -26,7 +29,9 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
-        return view('post.create');
+        $location = Location::get();
+        $categories = Category::pluck('title', 'id')->all();
+        return view('post.create', compact('location', 'categories'));
     }
 
     /**
@@ -35,11 +40,23 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-        $post = Post::create($request->validated());
+        dd(Post::postcount(Auth::user()->id));
+        $post = new Post();
 
-        $request->session()->flash('post.id', $post->id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->zipcode = $request->zipcode;
+        $post->user_id = Auth::user()->id;
+        $post->category_id = $request->category;
+        $post->slug = Str::slug($request->title,);
 
-        return redirect()->route('post.index');
+        $post->save();
+
+        $post->addAllMediaFromTokens();
+
+        Alert::success('Success Title', 'Success Message');
+
+        return redirect(route('post.index'));
     }
 
     /**
@@ -49,7 +66,10 @@ class PostController extends Controller
      */
     public function show(Request $request, Post $post)
     {
-        return view('post.show', compact('post'));
+        views($post)->cooldown(60)->record();
+        $category = Category::where('id', $post->category_id)->first();
+
+        return view('post.show', compact('post','category'));
     }
 
     /**
@@ -90,6 +110,7 @@ class PostController extends Controller
 
     public function filteredPosts($query)
     {
-        return view('post.index', compact('query'));
+        $category = Category::find($query);
+        return view('post.index', compact('query','category'));
     }
 }

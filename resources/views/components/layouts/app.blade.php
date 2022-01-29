@@ -88,6 +88,7 @@
         }
     })
 </script>
+@include('sweetalert::alert')
 @stack('footer-scripts')
 @livewireScripts
 </body>

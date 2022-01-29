@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
 /**
  * @property int $id
@@ -13,9 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Post extends Model
+class Post extends Model implements HasMedia, Viewable
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia, HasUploader, InteractsWithViews;
 
     /**
      * The attributes that are mass assignable.
@@ -62,5 +67,10 @@ class Post extends Model
     public static function filteredPosts($query)
     {
         return Post::where('cat_id', $query)->get();
+    }
+
+    public function scopePostcount($query, $id)
+    {
+        $query->where('user_id',$id)->count();
     }
 }
