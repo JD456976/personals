@@ -40,7 +40,13 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-        dd(Post::postcount(Auth::user()->id));
+        if (Post::postcount() >= 5)
+        {
+            Alert::error('Ooops', 'You already have 5 posts which are still active');
+
+            return redirect('user.posts');
+        }
+
         $post = new Post();
 
         $post->title = $request->title;
@@ -54,7 +60,7 @@ class PostController extends Controller
 
         $post->addAllMediaFromTokens();
 
-        Alert::success('Success Title', 'Success Message');
+        Alert::success('Success!', 'Post successfully created');
 
         return redirect(route('post.index'));
     }
@@ -79,7 +85,9 @@ class PostController extends Controller
      */
     public function edit(Request $request, Post $post)
     {
-        return view('post.edit', compact('post'));
+        $location = Location::get();
+        $categories = Category::pluck('title', 'id')->all();
+        return view('post.edit', compact('post', 'location','categories'));
     }
 
     /**
@@ -89,11 +97,18 @@ class PostController extends Controller
      */
     public function update(PostUpdateRequest $request, Post $post)
     {
-        $post->update($request->validated());
+        $post->title = $request->title;
+        $post->zipcode = $request->zipcode;
+        $post->category_id = $request->category_id;
+        $post->content = $request->content;
 
-        $request->session()->flash('post.id', $post->id);
+        $post->update();
 
-        return redirect()->route('post.index');
+        $post->addAllMediaFromTokens();
+
+        Alert::success('Success!', 'Post successfully renewed');
+
+        return redirect(route('user.posts'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Models;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
@@ -69,8 +70,8 @@ class Post extends Model implements HasMedia, Viewable
         return Post::where('cat_id', $query)->get();
     }
 
-    public function scopePostcount($query, $id)
+    public static function postcount()
     {
-        $query->where('user_id',$id)->count();
+        return Post::where('user_id',Auth::user()->id)->count();
     }
 }

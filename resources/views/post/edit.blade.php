@@ -1,12 +1,12 @@
 <x-layouts.app>
     <x-slot name="title">
-        Create A Post
+        Editing Post: {{ $post->title }}
     </x-slot>
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-start mb-0">Create A Post</h2>
+                    <h2 class="content-header-title float-start mb-0">Editing Post: {{ $post->title }}</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a>
@@ -28,11 +28,11 @@
 
                     </div>
                     <div class="card-body">
-                        {!! Form::open(['route' => 'post.store', 'method' => 'post', 'files' => true]) !!}
+                        {!! Form::open(['route' => ['post.update', $post->id], 'method' => 'patch', 'files' => true]) !!}
 
                         {!! Form::label('title', 'Title', ['class' => 'form-label']) !!}
                         <div class="input-group mb-2">
-                            {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => 'Your Title']) !!}
+                            {!! Form::text('title', old('title') ?? $post->title, ['class' => 'form-control', 'placeholder' => 'Your Title']) !!}
                         </div>
                         @error('title')
                         <x-alert type="danger" :message="$message" />
@@ -41,7 +41,7 @@
                         {!! Form::label('zipcode', 'Your Zipcode', ['class' => 'form-label']) !!}
                         <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Enter the zipcode you would like this
                                 post to be found by" class="input-group mb-2">
-                            {!! Form::text('zipcode', old('zipcode') ?? $location->zipCode, ['class' => 'form-control', 'placeholder' => 'Your Zipcode']) !!}
+                            {!! Form::text('zipcode', old('zipcode') ?? $location->zipCode, ['class' => 'form-control', 'placeholder' => 'Your Zipcdoe']) !!}
                         </div>
                         @error('zipcode')
                         <x-alert type="danger" :message="$message" />
@@ -49,7 +49,7 @@
 
                         {!! Form::label('content', 'Content', ['class' => 'form-label']) !!}
                         <div class="input-group mb-2">
-                            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'placeholder' => 'Your Content']) !!}
+                            {!! Form::textarea('content', old('content') ?? $post->content, ['class' => 'form-control', 'placeholder' => 'Your Content']) !!}
                         </div>
                         @error('content')
                         <x-alert type="danger" :message="$message" />
@@ -57,7 +57,7 @@
 
                         {!! Form::label('category', 'Category', ['class' => 'form-label']) !!}
                         <div class="input-group mb-2">
-                            {!! Form::select('category', $categories , null , ['class' => 'select2 form-select']) !!}
+                            {!! Form::select('category', $categories , $post->category_id, ['class' => 'select2 form-select']) !!}
                         </div>
                         @error('category')
                         <x-alert type="danger" :message="$message" />
@@ -66,8 +66,9 @@
                         <div class="input-group mb-2">
                             <div id="app">
                                 <file-uploader
-                                    :unlimited="true"
+                                    :media="{{ $post->getMediaResource('posts') }}"
                                     :max="5"
+                                    :unlimited="true"
                                     collection="posts"
                                     :tokens="{{ json_encode(old('images', [])) }}"
                                     label="Upload Images"

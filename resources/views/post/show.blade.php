@@ -69,7 +69,6 @@
                             <div class="d-flex align-items-center">
                                 <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Number of Views" class="d-flex align-items-center me-1">
                                     <i data-feather="eye" class="font-medium-5 text-body align-middle"></i>
-
                                 </div>
                                 {{ views($post)->count() }}
                             </div>
