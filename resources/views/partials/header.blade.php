@@ -48,6 +48,10 @@
             <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon"
                                                                                          data-feather="moon"></i></a>
             </li>
+            @can('is-admin')
+                <li class="nav-item d-none d-lg-block"><a href="{{ route('admin.dashboard') }}" class="nav-link">Admin</a>
+                </li>
+            @endcan
             <li class="nav-item d-none d-lg-block"><a class="nav-link">About</a>
             </li>
             <li class="nav-item d-none d-lg-block"><a class="nav-link">Contact</a>
