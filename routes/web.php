@@ -37,4 +37,9 @@ Route::post('report/post/{id}', [
     'uses' => 'App\Http\Controllers\ReportController@store',
 ]);
 
+Route::post('post/reply/{id}', [
+    'as' => 'post.reply',
+    'uses' => 'App\Http\Controllers\UserController@send',
+]);
+
 Route::resource('post', App\Http\Controllers\PostController::class);
