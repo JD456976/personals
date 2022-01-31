@@ -57,9 +57,13 @@
                         </div>
                         <div class="my-1 py-25">
                            @include('partials.report-modal')
+                            @if ($reported  >= 1)
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Already Reported" class="badge rounded-pill badge-light-secondary me-50"><i data-feather='alert-triangle'></i> Reported</span>
+                            @else
                             <a href="#">
                                 <span data-bs-toggle="modal" data-bs-target="#danger" class="badge rounded-pill badge-light-danger me-50"><i data-feather='alert-triangle'></i> Report</span>
                             </a>
+                            @endif
                         </div>
                         <p class="card-text mb-2">
                             {{ $post->content }}

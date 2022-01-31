@@ -6,6 +6,7 @@ use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -73,9 +74,10 @@ class PostController extends Controller
     public function show(Request $request, Post $post)
     {
         views($post)->cooldown(60)->record();
+        $reported = Report::reported($post);
         $category = Category::where('id', $post->category_id)->first();
 
-        return view('post.show', compact('post','category'));
+        return view('post.show', compact('post','category','reported'));
     }
 
     /**

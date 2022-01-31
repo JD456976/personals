@@ -22,7 +22,7 @@ class CreateReportsTable extends Migration
             $table->integer('reportable_id');
             $table->string('reason');
             $table->string('comment');
-            $table->boolean('is_resolved');
+            $table->boolean('is_resolved')->default(0);
             $table->timestamps();
         });
 

@@ -65,4 +65,9 @@ class Report extends Model
     {
         return $this->morphTo();
     }
+
+    public static function reported(Post $post)
+    {
+        return Report::where('reportable_id', $post->id)->count();
+    }
 }

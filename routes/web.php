@@ -32,6 +32,9 @@ Route::get('/user/posts/', [
     'uses' => 'App\Http\Controllers\UserController@posts',
 ])->middleware(['verified','password.confirm']);
 
-Route::resource('post', App\Http\Controllers\PostController::class);
+Route::post('report/post/{id}', [
+    'as' => 'report.post',
+    'uses' => 'App\Http\Controllers\ReportController@store',
+]);
 
-Route::resource('report', App\Http\Controllers\ReportController::class)->only('store');
+Route::resource('post', App\Http\Controllers\PostController::class);

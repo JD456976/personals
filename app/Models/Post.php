@@ -77,4 +77,6 @@ class Post extends Model implements HasMedia, Viewable
     {
         return Post::where('user_id',Auth::user()->id)->count();
     }
+
+
 }

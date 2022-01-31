@@ -4,17 +4,32 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel120">Danger Modal</h5>
+                <h5 class="modal-title" id="myModalLabel120">Report Post</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Tart lemon drops macaroon oat cake chocolate toffee chocolate bar icing. Pudding jelly beans
-                carrot cake pastry gummies cheesecake lollipop. I love cookie lollipop cake I love sweet gummi
-                bears cupcake dessert.
-            </div>
+            {!! Form::open(['route' => ['report.post', $post->id], 'method' => 'post']) !!}
+                <div class="modal-body">
+                    {!! Form::label('reason', 'Reason', ['class' => 'control-label']) !!}
+                    <div class="mb-1">
+                        {!! Form::select('reason', [
+                                            'spam' => 'Spam',
+                                            'under' => 'Under Age',
+                                            'service' => 'Sex Service Offered',
+                                            'other' => 'Other'
+                                        ] , null , ['class' => 'select2 form-select']) !!}
+                    </div>
+                    {!! Form::label('comment', 'Comment', ['class' => 'control-label']) !!}
+                    <div class="mb-1">
+                        {!! Form::text('comment', old('comment'), ['class' => 'form-control']) !!}
+                    </div>
+                    @error('comment')
+                    <x-alert type="danger" :message="$message" />
+                    @enderror
+                </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Accept</button>
+                {!! Form::submit('Submit', ['class' => 'btn btn-danger']) !!}
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
