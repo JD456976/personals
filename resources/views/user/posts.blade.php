@@ -7,6 +7,12 @@
             <div class="row breadcrumbs-top">
                 <div class="col-12">
                     <h2 class="content-header-title float-start mb-0">Your Posts</h2>
+                    <div class="breadcrumb-wrapper">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
@@ -18,16 +24,14 @@
             @foreach ($posts as $post)
                 <div class="col-3">
                     <div class="card">
-                        <a href="page-blog-detail.html">
                             @if ($post->getMedia('posts')->count() == 0)
                                 <img class="card-img-top img-fluid" src="{{ asset('app-assets/images/no_images.png') }}" alt="Blog Post pic" />
                             @else
                                 <img class="card-img-top img-fluid" src="{{ $post->getFirstMediaUrl('posts') }}" alt="Blog Post pic" />
                             @endif
-                        </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="page-blog-detail.html" class="blog-title-truncate text-body-heading">{{ $post->title }}</a>
+                                {{ $post->title }}
                             </h4>
                             <div class="d-flex">
                                 <div class="author-info">
@@ -48,7 +52,9 @@
                                     {{ views($post)->count() }}
                                 </div>
                                 <div>
-                                    <a href="{{ route('post.edit',$post->id) }}"><button type="button" class="btn btn-primary waves-effect waves-float waves-light">RENEW</button></a>
+                                    @if ($post->is_expired == 1)
+                                        <a href="{{ route('post.edit',$post->id) }}"><button type="button" class="btn btn-primary waves-effect waves-float waves-light">RENEW</button></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -57,26 +63,6 @@
             @endforeach
         </div>
         <!--/ Blog List Items -->
-
-        <!-- Pagination -->
-        <div class="row">
-            <div class="col-12">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center mt-2">
-                        <li class="page-item prev-item"><a class="page-link" href="#"></a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item active" aria-current="page"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                        <li class="page-item next-item"><a class="page-link" href="#"></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!--/ Pagination -->
     </div>
     <!--/ Blog List -->
 </x-layouts.app>

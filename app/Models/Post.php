@@ -32,6 +32,9 @@ class Post extends Model implements HasMedia, Viewable
         'user_id',
         'title',
         'content',
+        'is_expired',
+        'is_featured',
+        'category_id',
     ];
 
     /**

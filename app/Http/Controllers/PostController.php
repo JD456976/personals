@@ -44,7 +44,7 @@ class PostController extends Controller
         {
             Alert::error('Ooops', 'You already have 5 posts which are still active');
 
-            return redirect('user.posts');
+            return redirect(route('user.posts'));
         }
 
         $post = new Post();
@@ -62,7 +62,7 @@ class PostController extends Controller
 
         Alert::success('Success!', 'Post successfully created');
 
-        return redirect(route('post.index'));
+        return redirect(route('post.show', $post->id));
     }
 
     /**
@@ -101,6 +101,7 @@ class PostController extends Controller
         $post->zipcode = $request->zipcode;
         $post->category_id = $request->category_id;
         $post->content = $request->content;
+        $post->is_expired = 0;
 
         $post->update();
 

@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('zipcode')->nullable();
             $table->string('slug')->nullable();
             $table->boolean('is_featured')->default(0);
+            $table->boolean('is_expired')->default(0);
             $table->timestamps();
         });
 
