@@ -61,13 +61,14 @@
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                     <a class="dropdown-item"
                             href="{{ route('post.create') }}"><i
-                            class="me-50" data-feather="user"></i> New Post</a>
+                            class="me-50" data-feather="pen-tool"></i> New Post</a>
                     <a class="dropdown-item"
                              href="{{ route('user.posts') }}"><i
-                            class="me-50" data-feather="mail"></i> My Posts</a>
-                    <a class="dropdown-item" href="app-chat.html"><i class="me-50"
-                                                                                 data-feather="message-square"></i>
-                        Logout</a>
+                            class="me-50" data-feather="folder"></i> My Posts</a>
+                    {!! Form::open(['route' => 'logout', 'method' => 'post']) !!}
+                    {!! Form::submit('Logout', ['class' => 'form-control', 'type' => 'button']) !!}
+                    {!! Form::close() !!}
+
                 </div>
             </li>
         </ul>
