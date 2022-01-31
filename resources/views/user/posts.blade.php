@@ -31,7 +31,11 @@
                             @endif
                         <div class="card-body">
                             <h4 class="card-title">
+                                @if ($post->is_expired == 0)
+                                    <a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a>
+                                @else
                                 {{ $post->title }}
+                                @endif
                             </h4>
                             <div class="d-flex">
                                 <div class="author-info">
