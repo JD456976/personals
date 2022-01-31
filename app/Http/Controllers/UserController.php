@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostReplyRequest;
 use App\Mail\SendReplyMail;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -18,7 +18,7 @@ class UserController extends Controller
         return view('user.posts', compact('posts'));
     }
 
-    public function send(Request $request, $id)
+    public function send(PostReplyRequest $request, $id)
     {
         $post = Post::where('id',$id)->first();
 

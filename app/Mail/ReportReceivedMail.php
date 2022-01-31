@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Post;
 use App\Models\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,6 +32,8 @@ class ReportReceivedMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.report.received');
+        return $this->markdown('emails.report.received',[
+            'url' => route('post.show',$this->report->reportable_id)
+        ]);
     }
 }

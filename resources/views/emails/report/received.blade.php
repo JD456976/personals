@@ -4,11 +4,13 @@ Hello Admin,
 
 A report was received:
 
-Item: {{ Str::remove('App\Models\\', $report->reportable_type) }}
-
 Reason: {{ $report->reason }}
 
 Comment: {{ $report->comment }}
+
+@component('mail::button', ['url' => $url])
+    View Post
+@endcomponent
 
 Thanks,<br>
 {{ config('app.name') }}
