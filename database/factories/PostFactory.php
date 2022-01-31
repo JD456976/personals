@@ -27,6 +27,7 @@ class PostFactory extends Factory
             'user_id' => User::factory(),
             'category_id' => $this->faker->numberBetween(1,9),
             'title' => $this->faker->sentence(1),
+            'slug' => $this->faker->slug(),
             'content' => $this->faker->paragraphs(3, true),
         ];
     }

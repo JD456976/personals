@@ -1,5 +1,5 @@
 <x-livewire-tables::bs5.table.cell>
-    <a href="{{ route('post.show', $row->id) }}">{{ $row->title }}</a>
+    <a href="{{ route('post.show', $row->slug) }}">{{ $row->title }}</a>
 </x-livewire-tables::bs5.table.cell>
 
 <x-livewire-tables::bs5.table.cell>

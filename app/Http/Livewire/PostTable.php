@@ -31,10 +31,8 @@ class PostTable extends DataTableComponent
 
     public function query(): Builder
     {
-
-        $posts = $this->posts;
         return Post::query()
-            ->where('category_id',$posts);
+            ->where('category_id',$this->posts);
     }
 
     public function rowView(): string
