@@ -10,7 +10,7 @@
             @foreach ($categories as $category)
                 <div class="col-md-4 col-sm-6 col-12 kb-search-content">
                     <div class="card">
-                        <a href="{{ route('category', $category->id) }}">
+                        <a href="{{ route('category', [$category->id, $category->slug]) }}">
                             <div class="row justify-content-center">
                                 <div style="font-size:96px;" class="col-3 text-center">
                                     {!! $category->icon !!}

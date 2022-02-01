@@ -7,7 +7,7 @@
             <div class="row breadcrumbs-top">
                 <div class="col-12">
                     <div class="breadcrumb-wrapper">
-                        {{ Breadcrumbs::render('home') }}
+                        {{ Breadcrumbs::render('category', $category) }}
                     </div>
                 </div>
             </div>

@@ -47,6 +47,11 @@ class Post extends Model implements HasMedia, Viewable
         'user_id' => 'integer',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -76,10 +81,5 @@ class Post extends Model implements HasMedia, Viewable
     public static function postcount()
     {
         return Post::where('user_id',Auth::user()->id)->count();
-    }
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
     }
 }
