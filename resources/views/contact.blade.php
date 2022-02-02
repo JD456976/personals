@@ -13,28 +13,28 @@
                             <div class="mb-2">
                                 {!! Form::label('name', 'Name', ['class' => 'form-label']) !!}
                                 {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Your Name']) !!}
+                                @error('name')
+                                <x-alert type="danger" :message="$message" />
+                                @enderror
                             </div>
-                            @error('name')
-                            <x-alert type="danger" :message="$message" />
-                            @enderror
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="mb-2">
                                 {!! Form::label('email', 'Email', ['class' => 'form-label']) !!}
                                 {!! Form::email('email', old('email'), ['class' => 'form-control', 'placeholder' => 'Your Email']) !!}
+                                @error('email')
+                                <x-alert type="danger" :message="$message" />
+                                @enderror
                             </div>
-                            @error('email')
-                            <x-alert type="danger" :message="$message" />
-                            @enderror
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="mb-2">
                                 {!! Form::label('phone', 'Phone', ['class' => 'form-label']) !!}
                                 {!! Form::text('phone', old('phone'), ['class' => 'form-control', 'placeholder' => 'Your Phone']) !!}
+                                @error('phone')
+                                <x-alert type="danger" :message="$message" />
+                                @enderror
                             </div>
-                            @error('phone')
-                            <x-alert type="danger" :message="$message" />
-                            @enderror
                         </div>
                         <div class="col-12">
                             {!! Form::label('message', 'Message', ['class' => 'form-label']) !!}

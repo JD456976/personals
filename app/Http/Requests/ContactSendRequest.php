@@ -16,7 +16,7 @@ class ContactSendRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'phone' => ['sometimes', 'string'],
+            'phone' => ['nullable', 'string'],
             'message' => ['required', 'string']
         ];
     }
