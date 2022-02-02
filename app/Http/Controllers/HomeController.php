@@ -27,8 +27,8 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    public function contactSend(ContactSendRequest $request)
+    public function contactSen
     {
-        
+
     }
 }
