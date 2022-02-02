@@ -1,33 +1,15 @@
 models:
-  Post:
-    user_id: id foreign:users
+  Page:
     title: string
-    content: longText
-    relationships:
-      belongsTo: User
-      belongsToMany: Category
-
-  Category:
-    title: string
-
-  Report:
-    user_id: id foreign:users
-    reportable_type: string
-    reportable_id: integer
-    reason: string
-    comment: string
-    is_resolved: boolean
-    relationships:
-      belongsTo: User
-      hasOne: Post
+    slug: string
+    content: longtext
+    active: boolean
+    main_menu: boolean
+    footer_menu: boolean
+    timestamps
 
 controllers:
-  Post:
+  Admin/Page:
     resource
-  Report:
-    store:
-      validate: reason, content
-      save: post
-      redirect: back
 
-seeders: Post
+seeders: Page

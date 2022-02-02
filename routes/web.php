@@ -21,6 +21,21 @@ Route::get('/', [
     'uses' => 'App\Http\Controllers\HomeController@home',
 ])->middleware(['verified','password.confirm']);
 
+Route::get('/page/{slug}', [
+    'as' => 'page',
+    'uses' => 'App\Http\Controllers\HomeController@page',
+]);
+
+Route::get('/contact', [
+    'as' => 'contact',
+    'uses' => 'App\Http\Controllers\HomeController@contact',
+]);
+
+Route::post('/contact', [
+    'as' => 'contact.send',
+    'uses' => 'App\Http\Controllers\HomeController@contactSend',
+]);
+
 
 Route::get('/category/{id}', [
     'as' => 'category',
@@ -40,6 +55,6 @@ Route::post('report/post/{id}', [
 Route::post('post/reply/{id}', [
     'as' => 'post.reply',
     'uses' => 'App\Http\Controllers\UserController@send',
-]);
+])->middleware(['throttle:post-reply']);
 
 Route::resource('post', App\Http\Controllers\PostController::class);

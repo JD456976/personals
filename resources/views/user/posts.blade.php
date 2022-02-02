@@ -21,6 +21,11 @@
     <div class="blog-list-wrapper">
         <!-- Blog List Items -->
         <div class="row">
+            @if(count($posts) == 0)
+                <div class="alert alert-warning" role="alert">
+                    <div class="alert-body"><strong>No Posts!</strong> You have no posts to display here.</div>
+                </div>
+            @endif
             @foreach ($posts as $post)
                 <div class="col-3">
                     <div class="card">
@@ -57,7 +62,7 @@
                                 </div>
                                 <div>
                                     @if ($post->is_expired == 1)
-                                        <a href="{{ route('post.edit',$post->id) }}"><button type="button" class="btn btn-primary waves-effect waves-float waves-light">RENEW</button></a>
+                                        <a href="{{ route('post.edit',$post->slug) }}"><button type="button" class="btn btn-primary waves-effect waves-float waves-light">RENEW</button></a>
                                     @endif
                                 </div>
                             </div>

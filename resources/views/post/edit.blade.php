@@ -20,7 +20,7 @@
 
                     </div>
                     <div class="card-body">
-                        {!! Form::open(['route' => ['post.update', $post->id], 'method' => 'patch', 'files' => true]) !!}
+                        {!! Form::open(['route' => ['post.update', $post->slug], 'method' => 'patch', 'files' => true]) !!}
 
                         {!! Form::label('title', 'Title', ['class' => 'form-label']) !!}
                         <div class="input-group mb-2">

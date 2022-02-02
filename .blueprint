@@ -1,25 +1,16 @@
 created:
-    - app/Http/Controllers/PostController.php
-    - app/Http/Controllers/ReportController.php
-    - database/factories/PostFactory.php
-    - database/factories/CategoryFactory.php
-    - database/factories/ReportFactory.php
-    - database/migrations/2022_01_27_064413_create_posts_table.php
-    - database/migrations/2022_01_27_064414_create_categories_table.php
-    - database/migrations/2022_01_27_064415_create_reports_table.php
-    - database/migrations/2022_01_27_064416_create_category_post_table.php
-    - app/Models/Post.php
-    - app/Models/Category.php
-    - app/Models/Report.php
-    - database/seeders/PostSeeder.php
-    - tests/Feature/Http/Controllers/PostControllerTest.php
-    - tests/Feature/Http/Controllers/ReportControllerTest.php
-    - app/Http/Requests/PostStoreRequest.php
-    - app/Http/Requests/PostUpdateRequest.php
-    - app/Http/Requests/ReportStoreRequest.php
+    - app/Http/Controllers/Admin/PageController.php
+    - database/factories/PageFactory.php
+    - database/migrations/2022_02_01_055623_create_pages_table.php
+    - app/Models/Page.php
+    - database/seeders/PageSeeder.php
+    - tests/Feature/Http/Controllers/Admin/PageControllerTest.php
+    - app/Http/Requests/Admin/PageStoreRequest.php
+    - app/Http/Requests/Admin/PageUpdateRequest.php
 updated:
     - routes/web.php
 models:
     Post: { user_id: 'id foreign:users', title: string, content: longText, relationships: { belongsTo: User, belongsToMany: Category } }
     Category: { title: string }
     Report: { user_id: 'id foreign:users', reportable_type: string, reportable_id: integer, reason: string, comment: string, is_resolved: boolean, relationships: { belongsTo: User, hasOne: Post } }
+    Page: { title: string, slug: string, content: longtext, active: boolean, main_menu: boolean, footer_menu: boolean, timestamps: timestamps }

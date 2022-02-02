@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -64,6 +67,14 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+        });
+
+        RateLimiter::for('post-reply', function (Request $request) {
+            return Limit::perMinute(2)->by(optional($request->user())->id ?: $request->ip())
+                ->response(function() {
+                    Alert::error('Ooops!', 'You are sending replies a bit too fast. You are limited to 2 messages per minute.');
+                    return redirect()->back();
+                });
         });
     }
 }

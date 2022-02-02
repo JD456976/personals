@@ -7,6 +7,7 @@ use App\Mail\SendReplyMail;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\RateLimiter;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller

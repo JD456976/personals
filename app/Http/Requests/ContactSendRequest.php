@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostReplyRequest extends FormRequest
+class ContactSendRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,8 +14,10 @@ class PostReplyRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'message' => ['required', 'string', 'min:10'],
+            'phone' => ['sometimes', 'string'],
+            'message' => ['required', 'string']
         ];
     }
 }

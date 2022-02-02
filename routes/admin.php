@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['admin', 'auth'])->group(function() {
@@ -8,5 +12,11 @@ Route::middleware(['admin', 'auth'])->group(function() {
         'uses' => 'App\Http\Controllers\Admin\AdminController@dashboard',
     ]);
 
-    Route::resource('reports', \App\Http\Controllers\Admin\ReportController::class,);
+    Route::resource('reports', ReportController::class);
+
+    Route::resource('users', UserController::class);
+
+    Route::resource('category', CategoryController::class);
+
+    Route::resource('page', PageController::class);
 });

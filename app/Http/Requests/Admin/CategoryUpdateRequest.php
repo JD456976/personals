@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
-use App\Models\Post;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class PostUpdateRequest extends FormRequest
+class CategoryUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(Post $post)
+    public function authorize()
     {
-        if (Auth::user()->id == $post->user_id || Auth::user()->is_admin == 1)
-
+        if (Auth::user()->is_admin == 1)
             return true;
-        else {
+        else
+        {
             return false;
         }
     }
@@ -32,8 +31,7 @@ class PostUpdateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'content' => ['required', 'string'],
-            'zipcode' => ['required', 'numeric'],
+            'slug' => ['required', 'string'],
         ];
     }
 }
