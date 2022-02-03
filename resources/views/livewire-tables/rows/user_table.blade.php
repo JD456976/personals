@@ -1,9 +1,6 @@
-<x-livewire-tables::table.cell>
-    {{ $row->id }}
-</x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    {{ $row->email }}
+    <a href="{{ route('admin.users.show', $row->id) }}">{{ $row->email }}</a>
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
