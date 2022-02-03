@@ -44,7 +44,7 @@
 
 <body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="">
 
-@include('partials.admin.header')
+@include('partials.header')
 
 @include('partials.admin.menu')
 
@@ -62,7 +62,7 @@
 </div>
 <!-- END: Content-->
 
-@include('partials.admin.footer')
+@include('partials.footer')
 
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('/app-assets/vendors/js/vendors.min.js') }}"></script>

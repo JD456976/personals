@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [
     'as' => 'home',
     'uses' => 'App\Http\Controllers\HomeController@home',
-])->middleware(['verified','password.confirm']);
+])->middleware(['verified']);
 
 Route::get('/page/{slug}', [
     'as' => 'page',
