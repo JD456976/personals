@@ -21,7 +21,8 @@
         "rappasoft/laravel-livewire-tables": "^1.22",
         "realrashid/sweet-alert": "^4.1",
         "spatie/laravel-medialibrary": "^9.0.0",
-        "stevebauman/location": "^6.2"
+        "stevebauman/location": "^6.2",
+        "weidner/goutte": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
