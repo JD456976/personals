@@ -34,18 +34,18 @@ Route::get('/contact', [
 Route::post('/contact', [
     'as' => 'contact.send',
     'uses' => 'App\Http\Controllers\HomeController@contactSend',
-]);
+])->middleware(['throttle:contact-send']);
 
 
 Route::get('/category/{id}', [
     'as' => 'category',
     'uses' => 'App\Http\Controllers\PostController@filteredPosts',
-])->middleware(['verified','password.confirm']);
+])->middleware(['verified']);
 
 Route::get('/user/posts/', [
     'as' => 'user.posts',
     'uses' => 'App\Http\Controllers\UserController@posts',
-])->middleware(['verified','password.confirm']);
+])->middleware(['verified']);
 
 Route::post('report/post/{id}', [
     'as' => 'report.post',

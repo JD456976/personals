@@ -76,5 +76,13 @@ class RouteServiceProvider extends ServiceProvider
                     return redirect()->back();
                 });
         });
+
+        RateLimiter::for('contact-send', function (Request $request) {
+            return Limit::perHour(1)->by(optional($request->user())->id ?: $request->ip())
+                ->response(function() {
+                    Alert::warning('Ooops!', 'We got your original message, give us a chance to reply.');
+                    return redirect(\route('home'));
+                });
+        });
     }
 }
