@@ -30,9 +30,15 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
-        $location = Location::get();
+        if (Post::postcount() >= 5)
+        {
+            Alert::error('Ooops', 'You already have 5 posts which are still active');
+
+            return redirect(route('user.posts'));
+        }
+
         $categories = Category::pluck('title', 'id')->all();
-        return view('post.create', compact('location', 'categories'));
+        return view('post.create', compact('categories'));
     }
 
     /**
@@ -41,13 +47,6 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-        if (Post::postcount() >= 5)
-        {
-            Alert::error('Ooops', 'You already have 5 posts which are still active');
-
-            return redirect(route('user.posts'));
-        }
-
         $post = new Post();
 
         $post->title = $request->title;
@@ -87,9 +86,15 @@ class PostController extends Controller
      */
     public function edit(Request $request, Post $post)
     {
-        $location = Location::get();
+        if (Post::postcount() >= 5)
+        {
+            Alert::error('Ooops', 'You already have 5 posts which are still active');
+
+            return redirect(route('user.posts'));
+        }
+
         $categories = Category::pluck('title', 'id')->all();
-        return view('post.edit', compact('post', 'location','categories'));
+        return view('post.edit', compact('post', 'categories'));
     }
 
     /**

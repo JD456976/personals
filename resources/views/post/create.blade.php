@@ -41,7 +41,7 @@
                         {!! Form::label('zipcode', 'Your Zipcode', ['class' => 'form-label']) !!}
                         <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Enter the zipcode you would like this
                                 post to be found by" class="input-group mb-2">
-                            {!! Form::text('zipcode', old('zipcode') ?? $location->zipCode, ['class' => 'form-control', 'placeholder' => 'Your Zipcode']) !!}
+                            {!! Form::text('zipcode', old('zipcode'), ['class' => 'form-control', 'placeholder' => 'Your Zipcode']) !!}
                         </div>
                         @error('zipcode')
                         <x-alert type="danger" :message="$message" />

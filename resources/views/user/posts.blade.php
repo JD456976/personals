@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <h4 class="card-title">
                                 @if ($post->is_expired == 0)
-                                    <a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a>
+                                    <a href="{{ route('post.show', $post->slug) }}">{{ $post->title }}</a>
                                 @else
                                 {{ $post->title }}
                                 @endif
