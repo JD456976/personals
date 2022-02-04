@@ -12,6 +12,16 @@ Route::middleware(['admin', 'auth'])->group(function() {
         'uses' => 'App\Http\Controllers\Admin\AdminController@dashboard',
     ]);
 
+    Route::get('scraper', [
+        'as'=> 'scraper',
+        'uses' => 'App\Http\Controllers\Admin\AdminController@scraper',
+    ]);
+
+    Route::post('scrape', [
+        'as'=> 'scrape',
+        'uses' => 'App\Http\Controllers\Admin\AdminController@scrape',
+    ]);
+
     Route::resource('reports', ReportController::class);
 
     Route::resource('users', UserController::class);

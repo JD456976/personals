@@ -6,6 +6,8 @@
         @can('is-admin')
             <li class="nav-item d-none d-lg-block"><a href="{{ route('admin.dashboard') }}" class="nav-link">Admin</a>
             </li>
+            <li class="nav-item d-none d-lg-block"><a href="{{ route('admin.scraper') }}" class="nav-link">Scraper</a>
+            </li>
         @endcan
         @foreach ($mainMenu as $item)
             <li class="nav-item d-none d-lg-block"><a href="{{ route('page', $item->slug) }}" class="nav-link">{{ $item->title }}</a>
