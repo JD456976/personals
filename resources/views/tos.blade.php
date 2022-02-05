@@ -1,6 +1,6 @@
 <x-layouts.page>
     <x-slot name="title">
-        {{ $page->title }}
+        Terms of Service
     </x-slot>
     <!-- Blog Detail -->
     <div class="blog-detail-wrapper">
@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ $page->title }}</h4>
                         <p class="card-text mb-2">
-                           {!! $page->content !!}
+                            {!! $page->content !!}
                         </p>
                         <hr class="my-2" />
                     </div>

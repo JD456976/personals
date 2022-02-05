@@ -15,6 +15,9 @@
         @endforeach
         <li class="nav-item d-none d-lg-block"><a href="{{ route('contact')}}" class="nav-link">Contact</a>
         </li>
+        <li class="nav-item d-none d-lg-block"><a href="{{ route('login')}}" class="nav-link">Login</a>
+        </li>
+        @auth
         <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                                                        id="dropdown-user" href="#" data-bs-toggle="dropdown"
                                                        aria-haspopup="true" aria-expanded="false">
@@ -36,5 +39,6 @@
 
             </div>
         </li>
+            @endauth
     </ul>
 </div>

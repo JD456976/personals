@@ -5,9 +5,11 @@
     <!-- verify email basic -->
     <div class="card mb-0">
         <div class="card-body">
-            <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
-                🌚🌝
-            </a>
+            <div class="text-center">
+                <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
+                    🌚🌝
+                </a>
+            </div>
             @if (session('status'))
                 <x-alert type="success" :message="session('status')" />
             @endif

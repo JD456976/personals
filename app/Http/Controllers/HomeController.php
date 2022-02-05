@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactSendRequest;
-use App\Jobs\ProcessPosts;
 use App\Mail\ContactSendMail;
 use App\Models\Category;
 use App\Models\Page;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -38,5 +36,11 @@ class HomeController extends Controller
         Alert::success('Success!', 'Your message has been sent');
 
         return redirect(route('home'));
+    }
+
+    public function tos()
+    {
+        $page = Page::where('slug','tos')->first();
+        return view('tos', compact('page'));
     }
 }

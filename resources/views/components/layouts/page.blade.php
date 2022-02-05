@@ -44,7 +44,7 @@
 
 <body class="horizontal-layout horizontal-menu 1-column navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="1-column">
 
-
+@include('partials.header')
 
 <!-- BEGIN: Content-->
 <div class="app-content content ">
@@ -52,7 +52,7 @@
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
         <div class="row justify-content-center">
-            <div class="col-5">
+            <div class="col-10">
                 <div class="content-body">
                     {{ $slot }}
                 </div>

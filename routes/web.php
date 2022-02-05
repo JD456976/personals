@@ -26,6 +26,11 @@ Route::get('/page/{slug}', [
     'uses' => 'App\Http\Controllers\HomeController@page',
 ]);
 
+Route::get('/tos', [
+    'as' => 'tos',
+    'uses' => 'App\Http\Controllers\HomeController@tos',
+]);
+
 Route::get('/contact', [
     'as' => 'contact',
     'uses' => 'App\Http\Controllers\HomeController@contact',

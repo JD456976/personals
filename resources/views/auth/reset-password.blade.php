@@ -5,9 +5,11 @@
     <!-- Reset Password basic -->
     <div class="card mb-0">
         <div class="card-body">
-            <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
-                🌚🌝
-            </a>
+            <div class="text-center">
+                <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
+                    🌚🌝
+                </a>
+            </div>
             <h4 class="card-title mb-1 text-center">Reset Password 🔒</h4>
 
             {!! Form::open(['url' => 'reset-password', 'method' => 'post', 'class' => 'auth-reset-password-form mt-2']) !!}

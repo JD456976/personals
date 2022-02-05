@@ -5,12 +5,11 @@
     <!-- Login basic -->
     <div class="card mb-0">
         <div class="card-body">
-            <a href="{{ route('home') }}" class="brand-logo">
+            <div class="text-center">
                 <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
                     🌚🌝
                 </a>
-            </a>
-
+            </div>
             <h4 class="card-title mb-1 text-center">Welcome Back! 👋</h4>
             <p class="card-text mb-2">Please sign-in to your account to continue the adventure</p>
             {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'auth-login-form mt-2']) !!}

@@ -5,9 +5,11 @@
     <!-- Register basic -->
     <div class="card mb-0">
         <div class="card-body">
-            <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
-                🌚🌝
-            </a>
+            <div class="text-center">
+                <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
+                    🌚🌝
+                </a>
+            </div>
             @if (session('status'))
                 <x-alert type="success" :message="session('status')" />
             @endif
@@ -44,7 +46,7 @@
                     <div class="form-check">
                         {!! Form::checkbox('tos', '1', null,  ['id' => 'tos', 'class' => 'form-check-input']) !!}
                         <label class="form-check-label" for="register-privacy-policy">
-                            I agree to <a href="#">privacy policy & terms</a>
+                            I am over the age of 18 <strong><u>AND</u></strong> agree to the <a target="_blank" href="{{ route('tos') }}">terms of service</a>
                         </label>
                     </div>
                     @error('tos')
