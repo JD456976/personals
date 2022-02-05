@@ -15,8 +15,10 @@
         @endforeach
         <li class="nav-item d-none d-lg-block"><a href="{{ route('contact')}}" class="nav-link">Contact</a>
         </li>
+        @guest
         <li class="nav-item d-none d-lg-block"><a href="{{ route('login')}}" class="nav-link">Login</a>
         </li>
+        @endguest
         @auth
         <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                                                        id="dropdown-user" href="#" data-bs-toggle="dropdown"
