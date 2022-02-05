@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Goutte\Client;
 use Illuminate\Http\Request;
-use Symfony\Component\ErrorHandler\Debug;
-use Weidner\Goutte\GoutteFacade;
+use Goutte\Client;
 
 class AdminController extends Controller
 {
@@ -22,14 +20,9 @@ class AdminController extends Controller
 
     public function scrape(Request $request)
     {
-        $client = new Client(['debug' => true,]);
-        $crawler = $client->request('GET', 'https://doublelist.com/login');
-        $form = $crawler->selectButton('login')->form();
-        Debug::logPrintR();
-        $crawler = $client->submit($form, ['login' => 'jdog45@gmail.com', 'password' => 'UPsidedown666!']);
-        dd($crawler);
-        $crawler->filter('a')->each(function ($node) {
-            print $node->text()."\n";
-        });
+        $client = new Client();
+        $crawler = $client->request('GET', $request->url);
+        $link = $crawler->filter('.resultitem a')->link();
+dd($link);
     }
 }
