@@ -41,7 +41,7 @@
                        {!! Form::label('remember', 'Remember Me', ['class' => 'form-check-label']) !!}
                     </div>
                 </div>
-                {!! Form::submit('Sign In', ['class' => 'btn btn-primary w-100']) !!}
+                <x-button text="Submit" type="primary" />
                 {!! Form::close() !!}
 
             <p class="text-center mt-2">
