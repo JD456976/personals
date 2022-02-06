@@ -8,6 +8,7 @@
         "php": "^8.0",
         "ahmed-aliraqi/laravel-media-uploader": "^6.2",
         "algolia/algoliasearch-client-php": "^3.2",
+        "barryvdh/laravel-ide-helper": "^2.12",
         "cyrildewit/eloquent-viewable": "^6.0",
         "diglactic/laravel-breadcrumbs": "^7.1",
         "fabpot/goutte": "^4.0",
@@ -28,6 +29,7 @@
         "weidner/goutte": "^2.1"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel-shift/blueprint": "^2.1",
