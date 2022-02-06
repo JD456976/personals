@@ -7,7 +7,6 @@ use App\Mail\ContactSendMail;
 use App\Models\Category;
 use App\Models\Page;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
@@ -15,12 +14,6 @@ class HomeController extends Controller
     public function home()
     {
         $categories = Category::all();
-        if (Session::has('cookies')==null) {
-
-            toast()->html('Cookies',"
-              <a href=".route('cookie')."><button class='btn btn-primary'>Accept All?</button></a>
-            ",'info')->position('bottom')->timerProgressBar()->autoClose(10000);
-        }
         return view('home', compact('categories'));
     }
 
@@ -49,12 +42,5 @@ class HomeController extends Controller
     {
         $page = Page::where('slug','tos')->first();
         return view('tos', compact('page'));
-    }
-
-    public function cookie()
-    {
-        Session::put('cookies',1);
-
-        return redirect()->back();
     }
 }

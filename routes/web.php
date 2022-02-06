@@ -36,11 +36,6 @@ Route::get('/contact', [
     'uses' => 'App\Http\Controllers\HomeController@contact',
 ]);
 
-Route::get('/cookie', [
-    'as' => 'cookie',
-    'uses' => 'App\Http\Controllers\HomeController@cookie',
-]);
-
 Route::post('/contact', [
     'as' => 'contact.send',
     'uses' => 'App\Http\Controllers\HomeController@contactSend',
