@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e569d2dfacf921949b471100fcb221a",
+    "content-hash": "fd8a11f9dd846d9f21ac83045c415741",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
