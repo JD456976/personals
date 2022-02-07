@@ -62,7 +62,7 @@
                 <a href="#" class="btn btn-twitter white">
                     <i data-feather="twitter"></i>
                 </a>
-                <a href="#" class="btn btn-google">
+                <a href="{{ url('auth/google') }}" class="btn btn-google">
                     <i data-feather="mail"></i>
                 </a>
                 <a href="#" class="btn btn-github">

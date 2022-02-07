@@ -63,3 +63,30 @@ Route::post('post/reply/{id}', [
 ])->middleware(['throttle:post-reply']);
 
 Route::resource('post', App\Http\Controllers\PostController::class);
+
+Route::group(['middleware' => ['guest']], function () {
+    //Socialite Routes
+    Route::get('auth/github', [App\Http\Controllers\SocialController::class, 'githubRedirect']);
+    Route::get('auth/github/callback', [
+        App\Http\Controllers\SocialController::class,
+        'loginWithGithub',
+    ]);
+
+    Route::get('auth/twitter', [App\Http\Controllers\SocialController::class, 'twitterRedirect']);
+    Route::get('auth/twitter/callback', [
+        App\Http\Controllers\SocialController::class,
+        'loginWithTwitter',
+    ]);
+
+    Route::get('auth/facebook', [App\Http\Controllers\SocialController::class, 'facebookRedirect']);
+    Route::get('auth/facebook/callback', [
+        App\Http\Controllers\SocialController::class,
+        'loginWithFacebook',
+    ]);
+
+    Route::get('auth/google', [App\Http\Controllers\SocialController::class, 'googleRedirect']);
+    Route::get('auth/google/callback', [
+        App\Http\Controllers\SocialController::class,
+        'loginWithGoogle',
+    ]);
+});

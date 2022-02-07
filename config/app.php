@@ -170,6 +170,7 @@ return [
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Weidner\Goutte\GoutteServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
 
         /*
          * Application Service Providers...
