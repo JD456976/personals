@@ -54,9 +54,6 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="author-info">
-                                <small class="text-muted me-25">by</small>
-                                <small><a href="#" class="text-body">{{ $post->user->username }}</a></small>
-                                <span class="text-muted ms-50 me-25">|</span>
                                 <small class="text-muted">{{ $post->created_at->diffForHumans() }}</small>
                                 <small class="text-muted me-25">| in zipcode: </small>
                                 <small class="text-muted">{{ $post->zipcode }}</small>
