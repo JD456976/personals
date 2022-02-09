@@ -1,4 +1,4 @@
-<x-layouts.auth>
+<x-layouts.page>
     <x-slot name="title">
         Error - 404
     </x-slot>
@@ -19,4 +19,4 @@
         </div>
     </div>
     <!-- / Error page-->
-</x-layouts.auth>
+</x-layouts.page>
