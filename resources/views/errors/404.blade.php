@@ -1,22 +1,75 @@
-<x-layouts.page>
+<x-layouts.auth>
     <x-slot name="title">
-        Error - 404
+        Login
     </x-slot>
-    <!-- Error page-->
-    <div class="misc-wrapper"><a class="brand-logo" href="{{ route('home') }}">
-            <a class="navbar-brand" href="{{ route('home') }}"><span style="font-size:52px;"
-                                                                     class="brand-logo">
-                           🌚🌝</span>
+    <!-- Login basic -->
+    <div class="card mb-0">
+        <div class="card-body">
+            <div class="text-center">
+                <a href="{{ route('home') }}" class="brand-logo" style="font-size:52px;">
+                    🌚🌝
+                </a>
+            </div>
+            <h4 class="card-title mb-1 text-center">Welcome Back! 👋</h4>
+            <p class="card-text mb-2">Please sign-in to your account to continue the adventure</p>
+            {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'auth-login-form mt-2']) !!}
+            <div class="mb-1">
+                {!! Form::label('email', 'Email', ['class' => 'form-label']) !!}
+                {!! Form::text('email', old('email'), ['class' => 'form-control', 'placeholder' => 'your@email.com']) !!}
+                @error('email')
+                <x-alert type="danger" :message="$message" />
+                @enderror
+            </div>
+            <div class="mb-1">
+                <div class="d-flex justify-content-between">
+                    {!! Form::label('password', 'Password', ['class' => 'form-label']) !!}
+                    <a href="{{ url('forgot-password') }}">
+                        <small>Forgot Password?</small>
+                    </a>
+                </div>
+                <div class="input-group  form-password-toggle">
+                    {!! Form::password('password', ['class' => 'form-control form-control-merge', 'placeholder' => '&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;']) !!}
+                    <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                </div>
+                @error('password')
+                <x-alert type="danger" :message="$message" />
+                @enderror
+            </div>
+            <div class="mb-1">
+                <div class="form-check">
+                    {!! Form::checkbox('remember', '1', null,  ['id' => 'name', 'class' => 'form-check-input']) !!}
+                    {!! Form::label('remember', 'Remember Me', ['class' => 'form-check-label']) !!}
+                </div>
+            </div>
+            <x-button text="Submit" type="primary" />
+            {!! Form::close() !!}
 
-            </a>
-            <h2 class="brand-text text-primary ms-1">NightMeetsDay</h2>
-        </a>
-        <div class="misc-inner p-2 p-sm-3">
-            <div class="w-100 text-center">
-                <h2 class="mb-1">Page Not Found 🕵🏻‍♀️</h2>
-                <p class="mb-2">Oops! 😖 The requested URL was not found on this server.</p><a class="btn btn-primary mb-2 btn-sm-block" href="{{ route('home') }}">Back to home</a><img class="img-fluid" src="../../../app-assets/images/pages/error.svg" alt="Error page" />
+            <p class="text-center mt-2">
+                <span>New on our platform?</span>
+                <a href="{{ route('register') }}">
+                    <span>Create an account</span>
+                </a>
+            </p>
+
+            <div class="divider my-2">
+                <div class="divider-text">or</div>
+            </div>
+
+            <div class="auth-footer-btn d-flex justify-content-center">
+                <a href="#" class="btn btn-facebook">
+                    <i data-feather="facebook"></i>
+                </a>
+                <a href="#" class="btn btn-twitter white">
+                    <i data-feather="twitter"></i>
+                </a>
+                <a href="{{ url('auth/google') }}" class="btn btn-google">
+                    <i data-feather="mail"></i>
+                </a>
+                <a href="#" class="btn btn-github">
+                    <i data-feather="github"></i>
+                </a>
             </div>
         </div>
     </div>
-    <!-- / Error page-->
-</x-layouts.page>
+    <!-- /Login basic -->
+</x-layouts.auth>
