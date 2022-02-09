@@ -62,7 +62,7 @@ class PostController extends Controller
 
         Alert::success('Success!', 'Post successfully created');
 
-        return redirect(route('post.show', $post->id));
+        return redirect(route('post.show', $post->slug));
     }
 
     /**
