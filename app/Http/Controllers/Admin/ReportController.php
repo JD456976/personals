@@ -69,11 +69,13 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $report = Report::where('reportable_id',$id)->first();
 
-        $report->is_resolved = 0;
+        $report->is_resolved = 1;
+
+        $report->update();
 
         Alert::success('Resolved', 'Report succesfully resolved');
 
@@ -86,8 +88,8 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Report $report)
     {
-        //
+
     }
 }

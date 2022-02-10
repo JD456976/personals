@@ -13,11 +13,7 @@ class ReportTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Id", "id")
-                ->sortable(),
-            Column::make("User id", "user_id")
-                ->sortable(),
-            Column::make("Reportable type", "reportable_type")
+            Column::make("Reported By", "user_id")
                 ->sortable(),
             Column::make("Reportable id", "reportable_id")
                 ->sortable(),
@@ -28,8 +24,6 @@ class ReportTable extends DataTableComponent
             Column::make("Is resolved", "is_resolved")
                 ->sortable(),
             Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
                 ->sortable(),
         ];
     }
