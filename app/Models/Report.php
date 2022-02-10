@@ -58,17 +58,12 @@ class Report extends Model
      */
     public function post()
     {
-        return $this->hasOne(Post::class);
+        return $this->hasOne(Post::class. 'id');
     }
 
     public function reportable()
     {
         return $this->morphTo();
-    }
-
-    public function page()
-    {
-        return $this->hasOne(Page::class, 'id');
     }
 
     public static function reported(Post $post)
