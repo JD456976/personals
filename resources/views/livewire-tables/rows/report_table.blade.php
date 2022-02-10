@@ -11,6 +11,7 @@
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
+    <a href="{{ route('page.show', $row->page->slug) }}"></a>
     {{ $row->reportable_id }}
 </x-livewire-tables::table.cell>
 
