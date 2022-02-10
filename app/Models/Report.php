@@ -58,7 +58,7 @@ class Report extends Model
      */
     public function post()
     {
-        return $this->hasOne(Post::class. 'id');
+        return $this->hasOne(Post::class, 'id');
     }
 
     public function reportable()
