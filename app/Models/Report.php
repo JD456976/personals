@@ -68,7 +68,7 @@ class Report extends Model
 
     public function page()
     {
-        return $this->hasOne(Page::class);
+        return $this->hasOne(Page::class, 'id');
     }
 
     public static function reported(Post $post)
