@@ -81,12 +81,12 @@
                                 </div>
                                 {{ views($post)->count() }}
                             </div>
-                            @unless (Auth::user()->id != $post->user_id)
+                            @if (Auth::user()->id != $post->user_id)
                                 <div>
                                     <button data-bs-toggle="modal" data-bs-target="#large" type="button" class="btn btn-primary waves-effect waves-float waves-light">REPLY</button>
                                     @include('partials.reply-modal')
                                 </div>
-                            @endunless
+                            @endif
                         </div>
                     </div>
                 </div>
