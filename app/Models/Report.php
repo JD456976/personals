@@ -68,6 +68,6 @@ class Report extends Model
 
     public static function reported(Post $post)
     {
-        return Report::where('reportable_id', $post->id)->count();
+        return Report::where('reportable_id', $post->id)->where('is_resolved',0)->count();
     }
 }

@@ -63,6 +63,13 @@
                         <div class="my-1 py-25">
                            @include('partials.report-modal')
                             @if ($reported  >= 1)
+                                @can('is-admin')
+                                    <div class="col-1 mb-1">
+                                        {!! Form::open(['route' => ['admin.reports.update', $post->id], 'method' => 'patch']) !!}
+                                        <x-button text="RESOLVE" type="success" />
+                                        {!! Form::close() !!}
+                                    </div>
+                                @endcan
                                 <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Already Reported" class="badge rounded-pill badge-light-secondary me-50"><i data-feather='alert-triangle'></i> Reported</span>
                             @else
                             <a href="#">

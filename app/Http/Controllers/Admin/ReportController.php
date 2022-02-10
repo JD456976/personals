@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Report;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ReportController extends Controller
 {
@@ -69,7 +71,13 @@ class ReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $report = Report::where('reportable_id',$id)->first();
+
+        $report->is_resolved = 0;
+
+        Alert::success('Resolved', 'Report succesfully resolved');
+
+        return redirect()->back();
     }
 
     /**

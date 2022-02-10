@@ -24,6 +24,7 @@ class ReportController extends Controller
         $report->reason = $request->reason;
         $report->comment = $request->comment;
         $report->user_id = Auth::user()->id;
+        $report->is_resolved = 1;
 
         $post->reports()->save($report);
 
