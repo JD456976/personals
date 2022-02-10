@@ -24,7 +24,11 @@
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    resolved
+    @if ($row->is_resolved == 0)
+        <span class="badge bg-info">RESOLVED</span>
+    @else
+        <span class="badge bg-danger">UNRESOLVED</span>
+    @endif
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
