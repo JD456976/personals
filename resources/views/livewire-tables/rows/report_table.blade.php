@@ -11,8 +11,8 @@
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    <a href="{{ route('post.show', $row->post->slug) }}"></a>
-    {{ $row->reportable_id }}
+    <a href="{{ route('post.show', $row->post->slug) }}">{{ $row->reportable_id }}</a>
+
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
